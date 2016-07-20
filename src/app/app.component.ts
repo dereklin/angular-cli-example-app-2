@@ -1,14 +1,15 @@
 import { Component } from '@angular/core';
-import { PomodoroTasksComponent } from './components/pomodoro-tasks/pomodoro-tasks';
+import { TIMER_DIRECTIVES } from './timer/timer';
+import { TASKS_DIRECTIVES } from './tasks/tasks';
+import { SHARED_PROVIDERS } from './shared/shared';
 
 @Component({
   moduleId: module.id,
-  selector: 'app-root',
-  template: `
-    <pomodoro-tasks></pomodoro-tasks>
-  `,
-  styleUrls: ['app.component.css'],
-  directives: [PomodoroTasksComponent]
+  selector: 'pomodoro-app',
+  directives: [TIMER_DIRECTIVES, TASKS_DIRECTIVES],
+  providers: [SHARED_PROVIDERS],
+  templateUrl: 'app.component.html',
+  styleUrls: ['app.component.css']
 })
-export class AppComponent {
-}
+
+export class AppComponent {}
