@@ -34,6 +34,13 @@ export default class TasksComponent implements OnInit {
 
   ngOnInit(): void {
     this.updateQueuedPomodoros();
+
+    this.taskService.taskFeed.subscribe(newTask => {
+      this.tasks.push(newTask);
+      this.updateQueuedPomodoros();
+    });
+
+
   }
 
   toggleTask(task: Task): void {
