@@ -8,7 +8,8 @@ export default class TaskService {
   taskStore: Task[] = [];
   taskFeed: Observable<Task>;
   private taskObserver: any;
-  private dataUrl = '/app/shared/data/raw-tasks.json';
+  // private dataUrl = '/app/shared/data/raw-tasks.json';
+  private dataUrl = '/app/tasks';
 
   constructor(private http: Http) {
     this.taskFeed = new Observable(observer => {
@@ -19,8 +20,12 @@ export default class TaskService {
 
   private fetchTasks(): void {
     this.http.get(this.dataUrl)
-      .map(response => response.json())
-      .map(stream => stream.map(res => {
+      .map(
+        response => response.json().data
+      )
+      .map(
+        stream => stream.map(
+          res => {
         return {
           name: res.name,
           deadline: new Date(res.deadline),

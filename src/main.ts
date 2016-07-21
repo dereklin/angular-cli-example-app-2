@@ -3,6 +3,7 @@ import { XHRBackend } from '@angular/http';
 import { InMemoryBackendService, SEED_DATA } from 'angular2-in-memory-web-api';
 import { InMemoryDataService }               from './app/shared/db/in-memory-data.service';
 
+import { HTTP_PROVIDERS } from '@angular/http';
 
 import 'rxjs/add/operator/map';
 import { bootstrap } from '@angular/platform-browser-dynamic';
@@ -13,7 +14,9 @@ if (environment.production) {
   enableProdMode();
 }
 
-bootstrap(AppComponent, [{ provide: XHRBackend, useClass: InMemoryBackendService }, // in-mem server
+bootstrap(AppComponent, [
+  HTTP_PROVIDERS,
+  { provide: XHRBackend, useClass: InMemoryBackendService }, // in-mem server
   { provide: SEED_DATA, useClass: InMemoryDataService }      // in-mem server data
 
 

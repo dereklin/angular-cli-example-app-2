@@ -8,7 +8,7 @@ import { HTTP_PROVIDERS } from '@angular/http';
   moduleId: module.id,
   selector: 'pomodoro-app',
   directives: [TIMER_DIRECTIVES, TASKS_DIRECTIVES],
-  providers: [SHARED_PROVIDERS, HTTP_PROVIDERS],
+  providers: [SHARED_PROVIDERS],
   templateUrl: 'app.component.html',
   styleUrls: ['app.component.css']
 })
