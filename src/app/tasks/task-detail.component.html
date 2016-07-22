@@ -1,5 +1,22 @@
   <div>
     <div>
+      Task Name: <input type="text" [(ngModel)]="task.name">
+    </div>
+    <div>
+      Deadline: <input type="text" [(ngModel)]="task.deadline">
+    </div>
+    <div>
+      # pomodoros: <input type="text" [(ngModel)]="task.pomodorosRequired">
+    </div>
+    <div>
+      <button (click)="save()">Add Task</button>
+    </div>
+  </div>
+
+
+<!--
+  <div>
+    <div>
       Task Name: <input type="text">
     </div>
     <div>
@@ -9,7 +26,8 @@
       # pomodoros: <input type="text">
     </div>
     <div>
-      <button>Add Task</button>
+      <button (click)="save()">Add Task</button>
     </div>
   </div>
 
+-->

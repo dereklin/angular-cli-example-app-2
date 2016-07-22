@@ -36,7 +36,13 @@ export default class TaskService {
       .subscribe(
         tasks => {
           this.taskStore = tasks;
-          tasks.forEach(task => this.taskObserver.next(task))
+          tasks.forEach(
+            task => {if (this && this.taskObserver) 
+                {
+                  this.taskObserver.next(task)
+                }
+              }
+            )
         },
         error => console.log(error)
       );
