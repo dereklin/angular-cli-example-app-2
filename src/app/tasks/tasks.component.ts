@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import TaskIconsComponent from './task-icons.component';
 import TaskTooltipDirective from './task-tooltip.directive';
+import TaskDetailComponent from './task-detail.component';
+
 import {
   TaskService,
   SettingsService,
@@ -10,7 +12,7 @@ import {
 
 @Component({
   selector: 'pomodoro-tasks',
-  directives: [TaskIconsComponent, TaskTooltipDirective],
+  directives: [TaskIconsComponent, TaskTooltipDirective, TaskDetailComponent],
   pipes: [SHARED_PIPES],
   styleUrls: ['app/tasks/tasks.component.css'],
   templateUrl: 'app/tasks/tasks.component.html'
