@@ -12,7 +12,7 @@ export default class TaskService {
   private dataUrl = '/app/tasks';
 
   constructor(private http: Http) {
-    this.taskFeed = new Observable(observer => {
+    this.taskFeed = Observable.create(observer => {
       this.taskObserver = observer;
     });
     this.fetchTasks();

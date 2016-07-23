@@ -6,7 +6,7 @@ import { Task, TaskService } from '../shared/shared';
   selector: 'pomodoro-task-detail',
   templateUrl: 'task-detail.component.html',
   styleUrls: ['task-detail.component.css'],
-  providers: [TaskService]
+  providers: []
 })
 
 
@@ -29,19 +29,19 @@ export default class TaskDetailComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.taskService.taskFeed.subscribe(newTask => {
+    // this.taskService.taskFeed.subscribe(newTask => {
       
       
-    });
+    // });
   }
 
   
 
   save() {
-    this.onSave.emit(this.task);
+    // this.onSave.emit(this.task);
 
-    // this.taskService
-    //     .addTask(this.task);
+    this.taskService
+        .addTask(this.task);
         
   }
 
