@@ -15,7 +15,7 @@
     </span>
   </p>
   <p #tooltip [hidden]="queuedPomodoros === 0">Mouseover for details</p>
-  <pomodoro-task-detail></pomodoro-task-detail>
+  <pomodoro-task-detail (onSave)="onSave($event)"></pomodoro-task-detail>
   <h4>Tasks backlog</h4>
   <table class="table">
     <thead>

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+
+
 import TaskIconsComponent from './task-icons.component';
 import TaskTooltipDirective from './task-tooltip.directive';
 import TaskDetailComponent from './task-detail.component';
@@ -57,4 +59,10 @@ export default class TasksComponent implements OnInit {
       return pomodoros + queuedTask.pomodorosRequired;
     }, 0);
   }
+
+  onSave(task: Task) {
+    this.tasks.push(task);
+  }
+
+
 };

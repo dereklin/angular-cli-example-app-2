@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit, EventEmitter, Output  } from '@angular/core';
 import { Task, TaskService } from '../shared/shared';
 
 @Component({
@@ -11,8 +11,9 @@ import { Task, TaskService } from '../shared/shared';
 
 
 
-export default class TaskDetailComponent {
+export default class TaskDetailComponent implements OnInit {
   @Input() task: Task;
+  @Output() onSave = new EventEmitter<Task>();
 
 
   constructor(private taskService: TaskService) {
@@ -26,9 +27,21 @@ export default class TaskDetailComponent {
     
   }
 
+  ngOnInit(): void {
+
+    this.taskService.taskFeed.subscribe(newTask => {
+      
+      
+    });
+  }
+
+  
+
   save() {
-    this.taskService
-        .addTask(this.task);
+    this.onSave.emit(this.task);
+
+    // this.taskService
+    //     .addTask(this.task);
         
   }
 
