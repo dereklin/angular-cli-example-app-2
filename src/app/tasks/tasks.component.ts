@@ -12,6 +12,8 @@ import {
   SHARED_PIPES
 } from '../shared/shared';
 
+import { Router } from '@angular/router';
+
 @Component({
   selector: 'pomodoro-tasks',
   directives: [TaskIconsComponent, TaskTooltipDirective, TaskDetailComponent],
@@ -27,6 +29,7 @@ export default class TasksComponent implements OnInit {
   timerMinutes: number;
 
   constructor(
+    private router: Router,
     private taskService: TaskService,
     private settingsService: SettingsService) {
 
@@ -64,5 +67,9 @@ export default class TasksComponent implements OnInit {
     this.tasks.push(task);
   }
 
+  workOn(): void {
+    let link = ['/timer'];
+    this.router.navigate(link);
+  }  
 
 };
