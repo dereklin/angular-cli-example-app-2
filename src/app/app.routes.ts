@@ -1,15 +1,20 @@
 import { provideRouter, RouterConfig }  from '@angular/router';
-import { TasksComponent, TaskEditorComponent } from './tasks/tasks';
+import { TasksComponent, TaskEditorComponent, TaskDetailComponent } from './tasks/tasks';
 import { TimerWidgetComponent } from './timer/timer';
 
 
 const routes: RouterConfig = [
   {
     path: '',
+    redirectTo: 'tasks',
+    pathMatch: 'full'
+  },
+  {
+    path: 'tasks',
     component: TasksComponent
   },
   {
-    path: 'tasks/editor',
+    path: 'task/editor',
     component: TaskEditorComponent
   },
   {
