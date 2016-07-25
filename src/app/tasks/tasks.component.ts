@@ -67,8 +67,8 @@ export default class TasksComponent implements OnInit {
     this.tasks.push(task);
   }
 
-  workOn(): void {
-    let link = ['/timer'];
+  workOn(index: number): void {
+    let link = ['/timer', index];
     this.router.navigate(link);
   }  
 

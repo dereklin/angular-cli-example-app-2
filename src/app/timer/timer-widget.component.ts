@@ -1,11 +1,13 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { SettingsService } from '../shared/shared';
+import { SettingsService, TaskService } from '../shared/shared';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'pomodoro-timer-widget',
   template: `
     <div class="text-center">
       <img src="/app/shared/assets/img/pomodoro.png">
+      <h3><small>{{ taskName }}</small></h3>
       <h1> {{ minutes }}:{{ seconds  | number: '2.0' }} </h1>
       <p>
         <button (click)="togglePause()" class="btn btn-danger">
@@ -14,20 +16,33 @@ import { SettingsService } from '../shared/shared';
       </p>
     </div>`
 })
-export default class TimerWidgetComponent {
+export default class TimerWidgetComponent implements OnInit {
   minutes: number;
   seconds: number;
   isPaused: boolean;
   buttonLabelKey: string;
   buttonLabelsMap: any;
+  sub: any;
+  taskName: string;
 
-  constructor(private settingsService: SettingsService) {
+  constructor(private settingsService: SettingsService,
+              private route: ActivatedRoute,
+              private taskService: TaskService) {
     this.buttonLabelsMap = settingsService.labelsMap.timer;
+    var test = this.taskService;
   }
 
   ngOnInit(): void {
     this.resetPomodoro();
     setInterval(() => this.tick(), 1000);
+
+    this.sub = this.route.params.subscribe(params => {
+      if (params['id'] !== undefined) {
+        let id = +params['id'];
+        this.taskName = this.taskService.taskStore[id].name;
+      } 
+    });
+    
   }
 
   resetPomodoro(): void {

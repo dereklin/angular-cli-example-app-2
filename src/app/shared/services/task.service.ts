@@ -18,11 +18,15 @@ export default class TaskService {
     this.fetchTasks();
   }
 
-  private fetchTasks(): void {
-    this.http.get(this.dataUrl)
-      .map(
-        response => response.json().data
-      )
+  private getTasksJson(): Observable<any[]> {
+    return this.http.get(this.dataUrl)
+            .map(
+              response => response.json().data
+            );
+  }
+
+  private getTasks(): Observable<Task[]> {
+    return this.getTasksJson()
       .map(
         stream => stream.map(
           res => {
@@ -32,7 +36,11 @@ export default class TaskService {
           pomodorosRequired: res.pomodorosRequired,
           queued: res.queued
         }
-      }))
+      }));
+  }
+
+  private fetchTasks(): void {
+    this.getTasks()
       .subscribe(
         tasks => {
           this.taskStore = tasks;

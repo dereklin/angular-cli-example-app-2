@@ -18,7 +18,7 @@ const routes: RouterConfig = [
     component: TaskEditorComponent
   },
   {
-    path: 'timer',
+    path: 'timer/:id',
     component: TimerWidgetComponent
   }
 ];
