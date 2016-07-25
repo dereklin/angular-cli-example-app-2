@@ -29,7 +29,7 @@ export default class TimerWidgetComponent implements OnInit {
               private route: ActivatedRoute,
               private taskService: TaskService) {
     this.buttonLabelsMap = settingsService.labelsMap.timer;
-    var test = this.taskService;
+    // this.taskName = null;
   }
 
   ngOnInit(): void {
