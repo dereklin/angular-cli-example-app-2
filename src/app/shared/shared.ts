@@ -8,6 +8,9 @@ import QueuedOnlyPipe from './pipes/queued-only.pipe';
 import SettingsService from './services/settings.service';
 import TaskService from './services/task.service';
 
+import { AuthService } from './services/auth.service';
+import { AuthGuard } from './services/auth-guard.service';
+
 const SHARED_PIPES: any[] = [
   FormattedTimePipe,
   QueuedOnlyPipe
@@ -15,8 +18,12 @@ const SHARED_PIPES: any[] = [
 
 const SHARED_PROVIDERS: any[] = [
   SettingsService,
-  TaskService
+  TaskService,
+  AuthService,
+  AuthGuard
 ];
+
+const AUTH_PROVIDERS: any[] = [AuthGuard, AuthService];
 
 export {
   Queueable,
@@ -28,5 +35,9 @@ export {
 
   SettingsService,
   TaskService,
-  SHARED_PROVIDERS
+  SHARED_PROVIDERS,
+
+  AuthService,
+  AuthGuard,
+  AUTH_PROVIDERS
 };

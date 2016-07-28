@@ -1,5 +1,6 @@
 import { RouterConfig }  from '@angular/router';
 import { TasksComponent, TaskEditorComponent, TaskDetailComponent } from './tasks';
+import { AuthGuard } from '../shared/shared';
 
 
 export const tasksRoutes: RouterConfig = [
@@ -14,6 +15,7 @@ export const tasksRoutes: RouterConfig = [
   },
   {
     path: 'task/editor',
-    component: TaskEditorComponent
+    component: TaskEditorComponent,
+    canActivate: [AuthGuard]
   }
 ];
