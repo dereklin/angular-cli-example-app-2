@@ -18,9 +18,7 @@ const SHARED_PIPES: any[] = [
 
 const SHARED_PROVIDERS: any[] = [
   SettingsService,
-  TaskService,
-  AuthService,
-  AuthGuard
+  TaskService
 ];
 
 const AUTH_PROVIDERS: any[] = [AuthGuard, AuthService];
