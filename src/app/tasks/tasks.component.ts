@@ -40,10 +40,22 @@ export default class TasksComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.tasks = this.taskService.taskStore;
+    
     this.updateQueuedPomodoros();
 
     this.taskService.taskFeed.subscribe(newTask => {
+      console.log("before");
+      this.tasks.forEach(function(t) {
+        console.log(t);
+      });
+
+
       this.tasks.push(newTask);
+      console.log("after");
+      this.tasks.forEach(function(t) {
+        console.log(t);
+      });
       this.updateQueuedPomodoros();
     });
 
@@ -61,6 +73,7 @@ export default class TasksComponent implements OnInit {
       .reduce((pomodoros: number, queuedTask: Task) => {
       return pomodoros + queuedTask.pomodorosRequired;
     }, 0);
+    console.log("there are " + this.queuedPomodoros + " queued");
   }
 
   onSave(task: Task) {
