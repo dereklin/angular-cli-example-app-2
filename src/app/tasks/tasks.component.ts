@@ -13,6 +13,10 @@ import {
 } from '../shared/shared';
 
 import { Router } from '@angular/router';
+import * as moment from 'moment';
+import 'd3'
+declare var d3;
+
 
 @Component({
   selector: 'pomodoro-tasks',
@@ -37,6 +41,7 @@ export default class TasksComponent implements OnInit {
     this.today = new Date();
     this.queueHeaderMapping = settingsService.pluralsMap.tasks;
     this.timerMinutes = settingsService.timerMinutes;
+
   }
 
   ngOnInit(): void {

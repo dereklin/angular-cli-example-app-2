@@ -18,7 +18,9 @@ module.exports = function(defaults) {
       'rxjs/**/*.+(js|js.map)',
       '@angular/**/*.+(js|js.map)',
       'ng2-bootstrap/**/*.js',
-      'angular2-in-memory-web-api/**/*.js'
+      'angular2-in-memory-web-api/**/*.js',
+      'd3/build/d3.js',
+      'moment/moment.js'
     ]
   });
 };

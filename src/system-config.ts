@@ -8,7 +8,9 @@
 /** Map relative paths to URLs. */
 const map: any = {
   'ng2-bootstrap': 'vendor/ng2-bootstrap',
-  'angular2-in-memory-web-api': 'vendor/angular2-in-memory-web-api'
+  'angular2-in-memory-web-api': 'vendor/angular2-in-memory-web-api',
+  'd3': 'vendor/d3/build/d3.js',
+  'moment': 'vendor/moment/moment.js'
 };
 
 /** User packages configuration. */
@@ -18,7 +20,11 @@ const packages: any = {
     defaultExtension: 'js',
     main: 'ng2-bootstrap.js'
   },
-  'angular2-in-memory-web-api': { main: 'index.js', defaultExtension: 'js' }
+  'angular2-in-memory-web-api': { main: 'index.js', defaultExtension: 'js' },
+  'd3': { format: 'global' }, 
+  'moment': {
+    format: 'cjs'
+  }
 };
 
 ////////////////////////////////////////////////////////////////////////////////////////////////

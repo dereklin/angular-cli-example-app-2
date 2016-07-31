@@ -2,12 +2,14 @@ import { provideRouter, RouterConfig }  from '@angular/router';
 import { tasksRoutes } from './tasks/tasks.routes';
 import { timerRoutes } from './timer/timer.routes';
 import { loginRoutes } from './login/login.routes';
+import { chartsRoutes } from './charts/charts.routes';
 import { AUTH_PROVIDERS } from './shared/shared';
 
 const routes: RouterConfig = [
   ...tasksRoutes,
   ...timerRoutes,
-  ...loginRoutes
+  ...loginRoutes,
+  ...chartsRoutes
 ];
 
 export const APP_ROUTER_PROVIDERS = [
