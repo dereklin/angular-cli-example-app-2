@@ -1,0 +1,12 @@
+:host .chart {
+  background-color: white;
+}
+
+:host .y.axis text {
+  fill: black;
+}
+
+:host .line {
+  fill: none;
+  stroke: black;
+}
