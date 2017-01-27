@@ -5,44 +5,19 @@ import { Task, TaskService } from '../shared/shared';
   moduleId: module.id,
   selector: 'pomodoro-task-detail',
   templateUrl: 'task-detail.component.html',
-  styleUrls: ['task-detail.component.css'],
-  providers: []
+  styleUrls: ['task-detail.component.css']
 })
-
-
-
-export default class TaskDetailComponent implements OnInit {
+export default class TaskDetailComponent {
   @Input() task: Task;
   @Output() onSave = new EventEmitter<Task>();
 
 
   constructor(private taskService: TaskService) {
-
-
-
     this.task = {name: 'Test', deadline: new Date('07/30/2016'), pomodorosRequired: 1, queued: false};
-
-
-
-    
   }
-
-  ngOnInit(): void {
-
-    // this.taskService.taskFeed.subscribe(newTask => {
-      
-      
-    // });
-  }
-
-  
 
   save() {
-    // this.onSave.emit(this.task);
-
-    this.taskService
-        .addTask(this.task);
-        
+    this.taskService.addTask(this.task);
   }
 
 

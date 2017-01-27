@@ -12,15 +12,18 @@ import * as moment from 'moment';
   directives: [LineChartComponent]
 })
 export class ChartsComponent {
-  chartConfig;
+  lineChartConfig;
+  private lineChartBasePrice = 100;
+  private lineChartPriceMovement = 2;
   private start;
   private end;
   private intervalId;
 
+
   constructor() {
     this.start = moment("201607300630", "YYYYMMDDHHmm");
     this.end = moment("201607301300", "YYYYMMDDHHmm");
-    this.chartConfig = {
+    this.lineChartConfig = {
       margin: { top: 20, right: 20, bottom: 40, left: 40 },
       startTime: this.start.valueOf(),
       endTime: this.end.valueOf(),
@@ -29,7 +32,7 @@ export class ChartsComponent {
 
     this.intervalId = window.setInterval(
         () => {
-          this.populateData();
+          this.populateLineChartData();
         }
       
       
@@ -41,26 +44,26 @@ export class ChartsComponent {
     
   }
 
-  private populateData() {
+  private populateLineChartData() {
       var dataPoint = {
         asOf: this.start.valueOf(),
-        px: Math.random() * 100,
-        iovp: Math.random() * 100,
-        bid: Math.random() * 100,
-        ask: Math.random() * 100
+        px: this.lineChartBasePrice + Math.random() * this.lineChartPriceMovement,
+        iovp: this.lineChartBasePrice + Math.random() * this.lineChartPriceMovement,
+        bid: this.lineChartBasePrice + Math.random() * this.lineChartPriceMovement,
+        ask: this.lineChartBasePrice + Math.random() * this.lineChartPriceMovement
       };
 
-      if (this.chartConfig.data.length == 0) {
+      // if (this.chartConfig.data.length == 0) {
 
-        this.chartConfig.data.push(dataPoint);
+        this.lineChartConfig.data.push(dataPoint);
 
         // graphData.forEach(function(d, i) {
         //   d.px = Math.random() * 100;
         // });
 
-      } else {
-        window.clearInterval(this.intervalId);
-      }
+      // } else {
+      //   window.clearInterval(this.intervalId);
+      // }
 
       // if (that.width === "500") {
       //   that.width = "600";
@@ -72,7 +75,7 @@ export class ChartsComponent {
 
       if (this.start >= this.end) {
         this.start = moment("201607300630", "YYYYMMDDHHmm");
-        this.chartConfig.data = [];
+        this.lineChartConfig.data = [];
       }
     }
 

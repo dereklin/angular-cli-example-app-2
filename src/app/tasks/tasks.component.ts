@@ -37,7 +37,9 @@ export default class TasksComponent implements OnInit {
     private taskService: TaskService,
     private settingsService: SettingsService) {
 
-    this.tasks = this.taskService.taskStore;
+    var that = this;
+
+    that.tasks = that.tasks || that.taskService.taskStore;
     this.today = new Date();
     this.queueHeaderMapping = settingsService.pluralsMap.tasks;
     this.timerMinutes = settingsService.timerMinutes;
@@ -45,26 +47,16 @@ export default class TasksComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.tasks = this.taskService.taskStore;
-    
     this.updateQueuedPomodoros();
 
+    var that = this;
+
     this.taskService.taskFeed.subscribe(newTask => {
-      console.log("before");
-      this.tasks.forEach(function(t) {
-        console.log(t);
-      });
+      
 
-
-      this.tasks.push(newTask);
-      console.log("after");
-      this.tasks.forEach(function(t) {
-        console.log(t);
-      });
-      this.updateQueuedPomodoros();
+      that.tasks.push(newTask);
+      that.updateQueuedPomodoros();
     });
-
-
   }
 
   toggleTask(task: Task): void {
@@ -81,9 +73,9 @@ export default class TasksComponent implements OnInit {
     console.log("there are " + this.queuedPomodoros + " queued");
   }
 
-  onSave(task: Task) {
-    this.tasks.push(task);
-  }
+  // onSave(task: Task) {
+  //   this.tasks.push(task);
+  // }
 
   workOn(index: number): void {
     let link = ['/timer', index];

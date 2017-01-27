@@ -21,8 +21,6 @@ export default class TaskEditorComponent {
     private router: Router,
     private taskService: TaskService) {
       this.task = <Task>{};
-
-
   }
 
 

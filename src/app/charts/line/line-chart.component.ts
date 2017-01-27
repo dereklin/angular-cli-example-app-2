@@ -36,6 +36,8 @@ export class LineChartComponent implements OnInit, DoCheck {
   private xAxis: any;
   private yAxis: any;
   private priceLine: any;
+  private numberPoints: any;
+  private minMaxPoints: any;
   
   constructor(private el: ElementRef,
         private keyValueDiffers: KeyValueDiffers,
@@ -44,6 +46,9 @@ export class LineChartComponent implements OnInit, DoCheck {
     this.host = d3.select(this.htmlElement);
     this.configDiffer = this.keyValueDiffers.find({}).create(null);
     this.dataDiffer = this.iterableDiffers.find([]).create(null);
+
+    this.numberPoints = ["px", "iopv", "ask", "bid"];
+    this.resetMinMaxPoints();
   }
 
   ngOnInit() {
@@ -62,6 +67,13 @@ export class LineChartComponent implements OnInit, DoCheck {
     
   }
 
+  resetMinMaxPoints() {
+    this.minMaxPoints = {};
+    this.numberPoints.forEach((key) => {
+      this.minMaxPoints[key] = {};
+    });
+  }
+
   render() {
     if (!this.config.data) return;
     this.setup();
@@ -71,6 +83,50 @@ export class LineChartComponent implements OnInit, DoCheck {
       .attr("height", this.height + this.margin.top + this.margin.bottom);
     this.visCont
       .attr("transform", "translate(" + this.margin.left + "," + this.margin.top + ")");
+
+
+
+  	var data = [];
+    var lineData = [];
+    var bidAskData = [];
+    var priceData = [];
+    var iopvData = [];
+    this.resetMinMaxPoints();
+
+    // for (var i = 0; i < this.config.data.length; i++) {
+    //   if (this.config.data[i].asOf.getTime() > endTime) {
+    //     break;
+    //   }
+
+    //   if (inData[i].asOf.getTime() >= startTime) {
+    //     data.push(inData[i]);
+        
+    //     if (inData[i].asOf.getTime() >= chartStart && inData[i].asOf.getTime() <= chartEnd) {
+    //       lineData.push(inData[i]);
+    //       if (angular.isDefined(inData[i].bid) && angular.isDefined(inData[i].ask)) {
+    //         bidAskData.push(inData[i]);
+    //         setMin(minMaxPoints.bid, inData[i].bid);
+    //         setMax(minMaxPoints.bid, inData[i].bid);
+    //         setMin(minMaxPoints.ask, inData[i].ask);
+    //         setMax(minMaxPoints.ask, inData[i].ask);
+    //       }
+    //       if (angular.isDefined(inData[i].px)) {
+    //         priceData.push(inData[i]);
+    //         setMin(minMaxPoints.px, inData[i].px);
+    //         setMax(minMaxPoints.px, inData[i].px);
+    //       }
+    //       if (angular.isDefined(inData[i].iopv)) {
+    //         iopvData.push(inData[i]);
+    //         setMin(minMaxPoints.iopv, inData[i].iopv);
+    //         setMax(minMaxPoints.iopv, inData[i].iopv);
+    //       }
+          
+    //     }
+        
+    //   }
+    // }
+      
+
 
 
 
